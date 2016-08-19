@@ -13,11 +13,11 @@ import RxSwift
 import RxCocoa
 #endif
 
-public class RxCollectionViewSectionedAnimatedDataSource<S: AnimatableSectionModelType>
+open class RxCollectionViewSectionedAnimatedDataSource<S: AnimatableSectionModelType>
     : CollectionViewSectionedDataSource<S>
     , RxCollectionViewDataSourceType {
     public typealias Element = [S]
-    public var animationConfiguration = AnimationConfiguration()
+    open var animationConfiguration = AnimationConfiguration()
     
     // For some inexplicable reason, when doing animated updates first time
     // it crashes. Still need to figure out that one.
@@ -27,7 +27,7 @@ public class RxCollectionViewSectionedAnimatedDataSource<S: AnimatableSectionMod
         super.init()
     }
     
-    public func collectionView(_ collectionView: UICollectionView, observedEvent: Event<Element>) {
+    open func collectionView(_ collectionView: UICollectionView, observedEvent: Event<Element>) {
         UIBindingObserver(UIElement: self) { dataSource, newSections in
             #if DEBUG
                 self._dataSourceBound = true

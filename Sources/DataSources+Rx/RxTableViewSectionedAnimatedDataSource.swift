@@ -13,12 +13,12 @@ import RxSwift
 import RxCocoa
 #endif
 
-public class RxTableViewSectionedAnimatedDataSource<S: AnimatableSectionModelType>
+open class RxTableViewSectionedAnimatedDataSource<S: AnimatableSectionModelType>
     : RxTableViewSectionedDataSource<S>
     , RxTableViewDataSourceType {
     
     public typealias Element = [S]
-    public var animationConfiguration = AnimationConfiguration()
+    open var animationConfiguration = AnimationConfiguration()
 
     var dataSet = false
 
@@ -26,7 +26,7 @@ public class RxTableViewSectionedAnimatedDataSource<S: AnimatableSectionModelTyp
         super.init()
     }
 
-    public func tableView(_ tableView: UITableView, observedEvent: Event<Element>) {
+    open func tableView(_ tableView: UITableView, observedEvent: Event<Element>) {
         UIBindingObserver(UIElement: self) { dataSource, newSections in
             #if DEBUG
                 self._dataSourceBound = true
